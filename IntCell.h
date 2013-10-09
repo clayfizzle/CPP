@@ -1,3 +1,5 @@
+//Just adding comments for playing with version control.  Yay! Git.
+//
 #ifndef INTCELL_H
 #define INTCELL_H
 
