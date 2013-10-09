@@ -1,7 +1,7 @@
 /*
  *  GIVES :  SEGMENT FAULT 11 ERROR
- */
-/**********************/
+ *           when the ShallowCell constructors are called NOT compiled.  It's a runtime error.
+ *//**********************/
 #include <iostream>
 #include "IntCell.h"
 #include "ShallowCell.h"
@@ -69,9 +69,9 @@ void ShallowCell::write( int x )
 //// ---  MAIN  --- \\\\
 
 int main( int argc, char *argv[] ){
-    ShallowCell s1(52);
+//    ShallowCell s1(52);
 
-    ShallowCell s2;
+//    ShallowCell s2;
 
     IntCell i1(25);
 
