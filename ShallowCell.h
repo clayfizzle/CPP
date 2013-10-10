@@ -13,7 +13,7 @@ class ShallowCell{
         
         
         /* -- Methods -- */
-        const ShallowCell& operator = ( const ShallowCell &refX );
+        const ShallowCell* operator = ( const ShallowCell &refX );
         
         const ShallowCell operator + ( const ShallowCell &refX );
         

@@ -14,11 +14,14 @@ IntCell::IntCell( int initVal ) : storedVal( initVal ){
 }
 //ShallowCell Constructor
 ShallowCell::ShallowCell( int initVal ){
-    *storedVal = initVal;    
+   // storedVal = (int *)malloc(sizeof(int));
+   // *storedVal = initVal;    
+    
+    storedVal = new int (initVal);
 }
 //Copy Constructor
 ShallowCell::ShallowCell( const ShallowCell &refX ){
-    storedVal = new int( *refX.storedVal );
+    storedVal = refX.storedVal;
 }
 
 //Destructor
@@ -28,10 +31,9 @@ ShallowCell::~ShallowCell( ){
 
 /* -- Methods -- */
 // (=) operator overloading for SHALLOW COPY
-const ShallowCell& ShallowCell::operator = ( const ShallowCell &refX ){
-    if( this != &refX )
-        { *storedVal = *refX.storedVal; }
-    return *this;
+const ShallowCell * ShallowCell::operator = ( const ShallowCell &refX ){
+         return &refX; 
+
 }
 /*
 ShallowCell ShallowCell::operator + ( const ShallowCell &refX ){
@@ -69,26 +71,26 @@ void ShallowCell::write( int x )
 //// ---  MAIN  --- \\\\
 
 int main( int argc, char *argv[] ){
-//    ShallowCell s1(52);
+    ShallowCell *s1 = new ShallowCell(52);
 
-//    ShallowCell s2;
+    ShallowCell *s2 = new ShallowCell(52);
 
     IntCell i1(25);
 
     IntCell i2;
 
     cout << "Cell i1: " << i1.read() << "\nCell i2: " << i2.read() << endl;
-//    cout << "Cell s1: " << s1.read() << "\nCell s2: " << s2.read() << endl;
+    cout << "Cell s1: " << s1->read() << "\nCell s2: " << s2->read() << endl;
 
 
     i1.write(15); 
     i2.write(i1.read());
 
-//    s1.write(51); 
-//    s2.write(s1.read());
+    s1->write(51); 
+    s2->write(s1->read());
 
     cout << "Cell i1: " << i1.read() << "\nCell i2: " << i2.read() << endl;
-//    cout << "Cell s1: " << s1.read() << "\nCell s2: " << s2.read() << endl;
+    cout << "Cell s1: " << s1->read() << "\nCell s2: " << s2->read() << endl;
 
 
 }
